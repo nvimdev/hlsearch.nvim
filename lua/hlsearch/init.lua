@@ -48,7 +48,7 @@ local function hs_event(bufnr)
 end
 
 function hs.setup()
-  api.nvim_create_autocmd('BufEnter', {
+  api.nvim_create_autocmd('BufWinEnter', {
     group = group,
     callback = function(opt)
       hs_event(opt.buffer)
