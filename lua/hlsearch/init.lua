@@ -51,7 +51,7 @@ function hs.setup()
   api.nvim_create_autocmd('BufWinEnter', {
     group = group,
     callback = function(opt)
-      hs_event(opt.buffer)
+      hs_event(opt.buf)
     end,
     desc = 'hlsearch.nvim event'
   })
