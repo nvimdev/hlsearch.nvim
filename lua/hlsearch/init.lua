@@ -17,7 +17,13 @@ local function start_hl()
   end
 end
 
+local buffers = {}
+
 local function hs_event(bufnr)
+  if buffers[bufnr] then
+    return
+  end
+  buffers[bufnr] = true
   local cm_id = api.nvim_create_autocmd('CursorMoved', {
     buffer = bufnr,
     group = group,
@@ -40,6 +46,7 @@ local function hs_event(bufnr)
     buffer = bufnr,
     group = group,
     callback = function(opt)
+      buffers[bufnr] = nil
       pcall(api.nvim_del_autocmd, cm_id)
       pcall(api.nvim_del_autocmd, ie_id)
       pcall(api.nvim_del_autocmd, opt.id)
