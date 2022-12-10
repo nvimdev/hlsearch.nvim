@@ -12,7 +12,7 @@ end
 
 local function start_hl()
   local res = fn.getreg('/')
-  if vim.v.hlsearch == 1 and not fn.search([[\%#\zs]] .. res, 'cnW') then
+  if vim.v.hlsearch == 1 and fn.search([[\%#\zs]] .. res, 'cnW') == 0 then
     stop_hl()
   end
 end
