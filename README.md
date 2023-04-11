@@ -6,7 +6,7 @@ auto remove search highlight and rehighlight when using n or N
 - with packer.nvim
 
 ```lua
-packer.use {'glepnir/hlsearch.nvim', event = 'BufRead' config = function()
+packer.use {'nvimdev/hlsearch.nvim', event = 'BufRead' config = function()
     require('hlsearch').setup()
 end}
 ```
