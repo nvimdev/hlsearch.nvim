@@ -1,5 +1,4 @@
 local api, fn = vim.api, vim.fn
-local hs = {}
 local group = api.nvim_create_augroup('Hlsearch', { clear = true })
 
 local function stop_hl()
@@ -50,18 +49,20 @@ local function hs_event(bufnr)
       pcall(api.nvim_del_autocmd, cm_id)
       pcall(api.nvim_del_autocmd, ie_id)
       pcall(api.nvim_del_autocmd, opt.id)
-    end
+    end,
   })
 end
 
-function hs.setup()
+local function setup()
   api.nvim_create_autocmd('BufWinEnter', {
     group = group,
     callback = function(opt)
       hs_event(opt.buf)
     end,
-    desc = 'hlsearch.nvim event'
+    desc = 'hlsearch.nvim event',
   })
 end
 
-return hs
+return {
+  setup = setup,
+}
