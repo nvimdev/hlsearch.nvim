@@ -11,16 +11,13 @@ end
 
 local function start_hl()
   local res = fn.getreg('/')
-
   if vim.v.hlsearch ~= 1 then
       return
   end
-
   if res:find([[%#]]) then
       stop_hl()
       return
   end
-
   ok, res = pcall(fn.search, [[\%#\zs]] .. res, 'cnW')
   if ok and res == 0 then
     stop_hl()
