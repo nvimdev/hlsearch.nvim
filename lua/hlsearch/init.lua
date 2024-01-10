@@ -14,7 +14,7 @@ local function start_hl()
   if vim.v.hlsearch ~= 1 then
       return
   end
-  if res:find([[%#]]) then
+  if res:find([[%#]], 1, true) then
       stop_hl()
       return
   end
